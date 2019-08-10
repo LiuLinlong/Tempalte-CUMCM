@@ -1,0 +1,21 @@
+function [mk, bc]=armijo(xk,dk)%返回值是m的值 步长为beta^m
+beta=0.5;sigma=0.05;
+fprintf("beta=");
+disp(beta);
+fprintf("sigma=");
+disp(sigma);
+m=0;
+while(m<=25)
+    if(fx(xk+beta^m*dk)<=fx(xk)+sigma*beta^m*gfun(xk)'*dk)
+        mk=m;break;
+    end
+    m=m+1;
+end
+alpha=beta^mk;
+newxk=xk+alpha*dk;
+fk=fx(xk);
+newfk=fx(newxk);
+bc=beta^m;
+fprintf("步长为");
+disp(beta^mk);
+end
