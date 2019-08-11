@@ -1,9 +1,9 @@
 function newton()
 xk=[2,2]';
-epson=0.0001;
+epson=0.1;
 d=-gfun(xk);
 k=0;
-while(abs(-d)>=epson)
+while(norm(-d)>=epson)
     G=GGfun(xk);
     dk=G\d;
     xk=xk+dk;
